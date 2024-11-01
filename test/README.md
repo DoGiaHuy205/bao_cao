@@ -52,9 +52,11 @@
 - Led:
 	+ Đèn led hay còn gọi là điốt phát quang, là một biến thể của diode cơ bản, nó xác định độ chênh lệch điện áp nhỏ nhất giữa Anode (+ ) và Cathode (-), led khác diode ở chỗ là tạo ra ánh sáng khi dòng điện đi qua. Đèn led cần được kết nối đúng âm dương của nguồn điện để hoạt động. Đèn led có rất nhiều màu sắc khác nhau: đỏ, vàng, xanh lá, xanh dường, trắng…
 	+ Bài tập nháy led theo các hiệu ứng như hiệu ứng giọt nước, cánh bướm, bóng rơi,...
+
 - Biến trở:
 	+ Biến trở là một dạng điện trở có thể thay đổi giá trị, ví dụ điện trở 10kΩ thì giá trị của nó chỉ là 10kΩ, còn biến trở 10kΩ là có thể thay đổi từ 0 ~ 10kΩ. Cấu tạo của biến trở rất đơn giản bao gồm: con chạy, cuộn dây được làm bằng hợp kim có điện trở công suất lớn, chân ngõ ra 3 chân. Biến trở được ứng dụng rộng rãi trong các mạch điện tử, được dùng để điều chỉnh sai số, điều chỉnh phân áp, phân dòng trong mạch… Ví dụ dùng để tăng giảm âm lượng trong các mạch âm thanh, tăng giảm độ sáng của đèn…
 	+ Bài tập đọc giá trị biến trở bằng serial
+
 - Nút nhấn:
 	+ Nút nhấn là một dạng công tắc đơn giản để đóng ngắt các thiết bị hoặc điều khiển một số hoạt động, quá trình của các thiết bị điện tử, máy móc. Hầu hết, các nút nhấn được làm bằng nhựa hoặc kim loại. Nút nhấn có 2 loại là nút nhấn thường đóng và thường mở.
 	+ Cấu tạo: Nút nhấn gồm hệ thống lò xo, hệ thống các tiếp điểm thường hở – thường đóng và vỏ bảo vệ. Khi tác động vào nút nhấn, các tiếp điểm chuyển trạng thái, khi không còn tác động, các tiếp điểm trở về trạng thái ban đầu.
@@ -72,9 +74,11 @@
 - Còi buzz thụ động:
 	+ Chỉ cần cấp nguồn là phát ra âm thanh, còn còi buzz thụ động không có bộ dao động bên trong nên khi cấp một tần số từ 2Khz – 5Khz còi sẽ phát âm thanh tùy theo tần số và thời gian, còi thụ động giúp chúng ta kiểm soát được nhiều hiệu ứng âm thanh.
 	+ Bài tập: Một vài nốt nhạc tìm hiểu các câu lệnh
+
 - Quang trở:
 	+ Quang trở hay điện trở quang, photoresistor, photocell, LDR ( Light-dephendent resistor), là linh kiện điện tử được làm bằng chất đặc biệt có điện trở thay đổi giảm theo mức ánh sáng chiếu vào. Ở nơi có ít ánh sáng thì giá trị điện trở tăng cao có thể lên đến vài MΩ, còn nơi có ánh sáng mạnh thì giảm còn vài trăm Ω.Quang trở hoạt động dựa trên hiệu ứng quang điện trong khối vật chất. Khi photon có năng lượng đủ lớn đập vào, sẽ làm bật electron khỏi phân tử, trở thành tự do trong khối chất và làm chất bán dẫn thành dẫn điện. Mức độ dẫn điện tùy thuộc vào số photon được hấp thụ. Tùy thuộc chất bán dẫn mà quang trở phản ứng khác nhau với bước sóng photon khác nhau.
 	+ Bài tập: Sử dụng cầu chia áp để đọc giá trị thay đổi của quang trở với Arduino.
+
 - Cảm biến nghiêng:
 	+ Các cảm biến độ nghiêng kiểu công tắc bóng này là một loại công tắc kỹ thuật số thay đổi trạng thái từ mở sang đóng dựa trên độ nghiêng của nó so với vector trường hấp dẫn của trái đất. Về mặt điện, chúng hoạt động giống như nút nhấn, nơi các tiếp điểm dẫn điện khi công tắc đóng và không dẫn điện khi nó mở ra. Về mặt cơ học, chúng thường bao gồm một vỏ rỗng và một khối tự do dẫn điện bên trong; trên một đầu của vỏ, cảm biến có hai hoặc nhiều phần tử dẫn điện bị đoản mạch khi hướng của cảm biến đến mức khối lượng tự do bên trong cuộn và tiếp xúc vật lý với chúng.
 	+ Tìm hiểu cấu tạo cảm biến nghiêng ![ảnh](Cambiennghieng.png)
@@ -87,8 +91,9 @@
 2.3.1.1 Học mắc mạch cùng với các linh kiện là Led 7 đoạn, màn hình LCD 1602, cùng code**
 - Led 7 đoạn:
 	+ Led 7 đoạn hay Led 7 thanh (Seven Segment Display) gổm 7 thanh led đơn sắp xếp theo hình chữ “8”. Hầu hết các led 7 đoạn thực sự có 8 phân đoạn, với một dấu chấm ở phía bên phải của chữ số đóng vai trò là dấu thập phân. Mỗi đoạn được đặt tên bằng chữ từ A -> G và DP cho dấu thập phân. Mỗi phân đoạn đều có thể được điều khiển riêng lẻ, giống như một đèn LED thông thường. Có 2 loại led 7 đoạn là Anode chung và Cathode chung.
-	+ Tìm hiểu sơ đồ chân của led 7 đoạn: ![chân chung là gnd](7doan_gnd.png) ![chân chung là vcc](7doan_vcc.png)
+	+ Tìm hiểu sơ đồ chân của led 7 đoạn:  ![chân chung là gnd](7doan_gnd.png) ![chân chung là vcc](7doan_vcc.png)
 	+ Bài tập: Hiển thị các số từ 0 đến 9, kết hợp với nút bấm để hiển thị từ 0 đến 9
+
 - Màn hình LCD:
 	+ Màn hình LCD với khả năng hiển thị 2 dòng với mỗi dòng 16 ký tự, có thể hiển thị các kí tự đa dạng (chữ, số, kí tự đồ họa), được ứng dụng nhiều trong các board mạch điện tử khác nhau.
 	+ Tìm hiểu sơ đồ chân của LCD: ![ảnh](manLCD.png)
