@@ -91,7 +91,7 @@
 2.3.1.1 Học mắc mạch cùng với các linh kiện là Led 7 đoạn, màn hình LCD 1602, cùng code**
 - Led 7 đoạn:
 	+ Led 7 đoạn hay Led 7 thanh (Seven Segment Display) gổm 7 thanh led đơn sắp xếp theo hình chữ “8”. Hầu hết các led 7 đoạn thực sự có 8 phân đoạn, với một dấu chấm ở phía bên phải của chữ số đóng vai trò là dấu thập phân. Mỗi đoạn được đặt tên bằng chữ từ A -> G và DP cho dấu thập phân. Mỗi phân đoạn đều có thể được điều khiển riêng lẻ, giống như một đèn LED thông thường. Có 2 loại led 7 đoạn là Anode chung và Cathode chung.
-	+ Tìm hiểu sơ đồ chân của led 7 đoạn:
+
 	![chân chung là gnd](7doan_gnd.png)
 	![chân chung là vcc](7doan_vcc.png)
 	+ Bài tập: Hiển thị các số từ 0 đến 9, kết hợp với nút bấm để hiển thị từ 0 đến 9
