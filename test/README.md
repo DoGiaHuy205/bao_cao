@@ -108,202 +108,214 @@
 
 ### 5Bài: Sáng dần tắt dần, giọt nước, cánh bướm, rắn săn mồi, chuyển từ 1 đến 255 sang nhị phân(sáng bằng led)
 
-		#### Bài1. Led sáng dần tắt dần
-			https://drive.google.com/file/d/1XInBeQsgWI1CyQxFfWlPUlAa4b7TFEDa/view?usp=sharing
-		```cpp
-		int led[8]={13,12,14,27,26,25,33,32};
+#### Bài1. Led sáng dần tắt dần
+https://drive.google.com/file/d/1XInBeQsgWI1CyQxFfWlPUlAa4b7TFEDa/view?usp=sharing
+  
+	```cpp
+	int led[8]={13,12,14,27,26,25,33,32};
 
-		void setup() {
-		  // put your setup code here, to run once:
-		  for(int i=0; i<8; i++){
-			pinMode(led[i],OUTPUT);
+	void setup() {
+	  // put your setup code here, to run once:
+	  for(int i=0; i<8; i++){
+		pinMode(led[i],OUTPUT);
+	  }
+	}
+
+	void loop() {
+	  for(int i=0;i<8;i++){
+		digitalWrite(led[i],1);
+		delay(100);
+	  }
+	  for(int i=8;i>=0;i--){
+		digitalWrite(led[i],0);
+		delay(100);
+	  }
+	}
+	```
+ 
+#### Bài2. Hiệu ứng giọt nước
+https://drive.google.com/file/d/1PtJ0N5xqZGXm7jWjAmf8SWWym3HLZHic/view?usp=sharing
+ 
+	```cpp
+	int led[8]={13,12,14,27,26,25,33,32};
+
+	void setup() {
+	  // put your setup code here, to run once:
+	  for(int i=0; i<8; i++){
+		pinMode(led[i],OUTPUT);
+	  }
+	}
+
+	void loop() {
+	  int b = 7;
+	  for(int j=0;j<8;j++){
+		for(int i=0;i<=b;i++){
+		  digitalWrite(led[i],HIGH);
+		  delay(50);
+		  if(i != b){
+			digitalWrite(led[i],LOW);
+			delay(50);
 		  }
 		}
+		b--;
+	  }
+	  for(int i=0;i<8;i++){
+		  digitalWrite(led[i],LOW);
+		  delay(1);
+	}
+	```
+ 
+#### Bài3. Hiệu ứng cánh bướm
+https://drive.google.com/file/d/1dOiBS-S3SApkABgt-ShvpztX68HUcZkJ/view?usp=sharing
 
-		void loop() {
-		  for(int i=0;i<8;i++){
-			digitalWrite(led[i],1);
-			delay(100);
-		  }
-		  for(int i=8;i>=0;i--){
-			digitalWrite(led[i],0);
-			delay(100);
-		  }
-		}
-		```
-		#### Bài2. Hiệu ứng giọt nước
-			https://drive.google.com/file/d/1PtJ0N5xqZGXm7jWjAmf8SWWym3HLZHic/view?usp=sharing
-		```cpp
-		int led[8]={13,12,14,27,26,25,33,32};
+	```cpp
+	int led[8]={13,12,14,27,26,25,33,32};
 
-		void setup() {
-		  // put your setup code here, to run once:
-		  for(int i=0; i<8; i++){
-			pinMode(led[i],OUTPUT);
-		  }
-		}
+	void setup() {
+	  // put your setup code here, to run once:
+	  for(int i=0; i<8; i++){
+		pinMode(led[i],OUTPUT);
+	  }
+	}
 
-		void loop() {
-		  int b = 7;
-		  for(int j=0;j<8;j++){
-			for(int i=0;i<=b;i++){
-			  digitalWrite(led[i],HIGH);
-			  delay(50);
-			  if(i != b){
-				digitalWrite(led[i],LOW);
-				delay(50);
-			  }
-			}
-			b--;
-		  }
-		  for(int i=0;i<8;i++){
-			  digitalWrite(led[i],LOW);
-			  delay(1);
-		}
-		```
-		#### Bài3. Hiệu ứng cánh bướm
-			https://drive.google.com/file/d/1dOiBS-S3SApkABgt-ShvpztX68HUcZkJ/view?usp=sharing
-		```cpp
-		int led[8]={13,12,14,27,26,25,33,32};
+	void loop() {
+	  int a=3;
+		int b=4;
+	  for(int i=0;i<4;i++){
+		digitalWrite(led[a],1);
+		digitalWrite(led[b],1);
+		delay(200);
+		a--;
+		b++;
+	  }
+	  int m=7;
+	  int n=0;
+	  for(int i=0;i<4;i++){
+		digitalWrite(led[m],0);
+		digitalWrite(led[n],0);
+		delay(200);
+		m--;
+		n++;
+	  }
+	}
+	```
+  
+#### Bài4. Hiệu ứng rắn săn mồi
+https://drive.google.com/file/d/1WiFvh6EeyKEVU8W4LRGTDZ6RtsbJUEAv/view?usp=sharing
 
-		void setup() {
-		  // put your setup code here, to run once:
-		  for(int i=0; i<8; i++){
-			pinMode(led[i],OUTPUT);
-		  }
-		}
+	```cpp
+	int led[8]={13,12,14,27,26,25,33,32};
 
-		void loop() {
-		  int a=3;
-			int b=4;
-		  for(int i=0;i<4;i++){
-			digitalWrite(led[a],1);
-			digitalWrite(led[b],1);
-			delay(200);
-			a--;
-			b++;
-		  }
-		  int m=7;
-		  int n=0;
-		  for(int i=0;i<4;i++){
-			digitalWrite(led[m],0);
-			digitalWrite(led[n],0);
-			delay(200);
-			m--;
-			n++;
-		  }
-		}
-		```
-		#### Bài4. Hiệu ứng rắn săn mồi
-			https://drive.google.com/file/d/1WiFvh6EeyKEVU8W4LRGTDZ6RtsbJUEAv/view?usp=sharing
-		```cpp
-		int led[8]={13,12,14,27,26,25,33,32};
+	void batden(int x){
+	  for(int i=0;i<x;i++){
+		digitalWrite(led[i],HIGH);
+		delay(1);
+	  }
+	  delay(400);
+	}
 
-		void batden(int x){
-		  for(int i=0;i<x;i++){
-			digitalWrite(led[i],HIGH);
-			delay(1);
-		  }
-		  delay(400);
-		}
+	void setup(){
+	  for(int i=0;i<8;i++){
+		pinMode(led[i],OUTPUT);
+	  }
+	}
 
-		void setup(){
-		  for(int i=0;i<8;i++){
-			pinMode(led[i],OUTPUT);
-		  }
+	void loop(){
+	  digitalWrite(led[7],HIGH);
+	  int i=0;
+	  while(i<7){
+		batden(i);
+		for(int j=0;j<7;j++){
+		  digitalWrite(led[j+i],HIGH);
+		  delay(200);
+		  digitalWrite(led[j],LOW);
+		  delay(200);
 		}
+		i++;
+	  }
+	}
+	```
 
-		void loop(){
-		  digitalWrite(led[7],HIGH);
-		  int i=0;
-		  while(i<7){
-			batden(i);
-			for(int j=0;j<7;j++){
-			  digitalWrite(led[j+i],HIGH);
-			  delay(200);
-			  digitalWrite(led[j],LOW);
-			  delay(200);
-			}
-			i++;
-		  }
-		}
-		```
-		#### Bài5. Chuyển từ 1 đến 255 sang nhị phân(sáng bằng led)
-			https://drive.google.com/file/d/16_ukkg7Ak7KepVbQeDGaixUwcmDgqTqV/view?usp=sharing
-		```cpp
-		int led[8]={13,12,14,27,26,25,33,32};
+#### Bài5. Chuyển từ 1 đến 255 sang nhị phân(sáng bằng led)
+https://drive.google.com/file/d/16_ukkg7Ak7KepVbQeDGaixUwcmDgqTqV/view?usp=sharing
 
-		void setup(){
-		  for(int i=0;i<8;i++){
-			pinMode(led[i],OUTPUT);
-		  }
-		}
+	```cpp
+	int led[8]={13,12,14,27,26,25,33,32};
 
-		void loop(){
-		  for(int i=1;i<256;i++){
-			int dp[8]={0};
-			int x=i;
-			for(int i=7;i>=0;i--){
-			  dp[i]=x%2;
-			  x/=2;
-			}
-			for(int j=0;j<8;j++){
-			  digitalWrite(led[j],dp[j]);
-			  delay(1);
-			}
-			delay(1000);
-			for(int j=0;j<8;j++){
-			  digitalWrite(led[j],0);
-			  delay(1);
-			}
-			delay(1000);
-		  }
+	void setup(){
+	  for(int i=0;i<8;i++){
+		pinMode(led[i],OUTPUT);
+	  }
+	}
+
+	void loop(){
+	  for(int i=1;i<256;i++){
+		int dp[8]={0};
+		int x=i;
+		for(int i=7;i>=0;i--){
+		  dp[i]=x%2;
+		  x/=2;
 		}
-		```
+		for(int j=0;j<8;j++){
+		  digitalWrite(led[j],dp[j]);
+		  delay(1);
+		}
+		delay(1000);
+		for(int j=0;j<8;j++){
+		  digitalWrite(led[j],0);
+		  delay(1);
+		}
+		delay(1000);
+	  }
+	}
+	```
+ 
 ### Bài tập về biến trở và nút nhấn
 
-		#### Bài1. Đọc giá trị biến trở bằng serial
-		```cpp
-		void setup ()
-		{
-		   Serial.begin(9600); //Mở cổng Serial ở baudrate 9600
-		}
-		void loop()
-		{
-			int giatri = analogRead(A2);
-		    Serial.println(giatri);
-			int dienap;
-		   dienap = map(giatri,0,1023,0,5000);
-		   Serial.println(dienap);
-		   delay(1000);
-		}
-		```
+#### Bài1. Đọc giá trị biến trở bằng serial
+
+	```cpp
+	void setup ()
+	{
+	   Serial.begin(9600); //Mở cổng Serial ở baudrate 9600
+	}
+	void loop()
+	{
+		int giatri = analogRead(A2);
+	    Serial.println(giatri);
+		int dienap;
+	   dienap = map(giatri,0,1023,0,5000);
+	   Serial.println(dienap);
+	   delay(1000);
+	}
+	```
 		
-		#### Bài2. Đọc trạng thái nút nhấn báo qua LED
-		```cpp
-		int button = 11; // Nút nhấn được kết nối với chân 11 của Arduino
-		int led = 2; // Led được kết nối với chân 2 của Arduino
-		void setup()
-		{
-			Serial.begin(9600); // Mở cổng Serial ở baudrate 9600
-			pinMode(button, INPUT); // Khai báo chân D11 ở trạng thái đọc dữ liệu
-			pinMode(led,OUTPUT); // Khai báo chân nối led là ngõ ra
-		}
-		void loop()
-		{
-			int buttonStatus = digitalRead(button); //Đọc trạng thái button
-			if (buttonStatus == HIGH) // Nếu mà button bị nhấn
-				{
-					Serial.println("Nut dang duoc nhan");
-					digitalWrite(led,HIGH); // Đèn led sáng
-				}
-			else
-				{
-					digitalWrite(led,LOW); // ngược lại button không bị nhấn
-					Serial.println ("Nut chua duoc nhan");
-				}
-		}
-		```
+#### Bài2. Đọc trạng thái nút nhấn báo qua LED
+
+	```cpp
+	int button = 11; // Nút nhấn được kết nối với chân 11 của Arduino
+	int led = 2; // Led được kết nối với chân 2 của Arduino
+	void setup()
+	{
+		Serial.begin(9600); // Mở cổng Serial ở baudrate 9600
+		pinMode(button, INPUT); // Khai báo chân D11 ở trạng thái đọc dữ liệu
+		pinMode(led,OUTPUT); // Khai báo chân nối led là ngõ ra
+	}
+	void loop()
+	{
+		int buttonStatus = digitalRead(button); //Đọc trạng thái button
+		if (buttonStatus == HIGH) // Nếu mà button bị nhấn
+			{
+				Serial.println("Nut dang duoc nhan");
+				digitalWrite(led,HIGH); // Đèn led sáng
+			}
+		else
+			{
+				digitalWrite(led,LOW); // ngược lại button không bị nhấn
+				Serial.println ("Nut chua duoc nhan");
+			}
+	}
+	```
 		
 ## C. Khó Khăn
 	- Chưa có
