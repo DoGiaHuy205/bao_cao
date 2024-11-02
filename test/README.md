@@ -16,9 +16,9 @@
 
 - Tìm hiểu về các hàm: digital, analog, time, math.
 
-- CLB: học về led, button, biến trở, led 7 đoạn, màn hình LCD.
+- CLB đã được học về: led, button, biến trở, led 7 đoạn, màn hình LCD.
 
-- Làm bài tập blink 8 led các hiệu ứng, nhấn nút để bật tắt đèn, nhận giá trị biến trở và trả ra led, nhấn nút để led 7 đoạn sáng từ 1 đến 9, hiển thi chữ trên màn hình LCD.
+- Làm bài tập: blink 8 led các hiệu ứng, nhấn nút để bật tắt đèn, nhận giá trị biến trở và trả ra led, nhấn nút để led 7 đoạn sáng từ 1 đến 9, hiển thi chữ trên màn hình LCD.
 
 ## C. CÔNG VIỆC TIẾP THEO
 
