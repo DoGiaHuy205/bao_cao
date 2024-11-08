@@ -1,29 +1,18 @@
 # D23_DoGiaHuy
 
-## A. GIỚI THIỆU
 
-- Em tên là Huy là sinh viên năm 2, thành viên mới vào lap ạ.
+## A. NỘI DUNG ĐÃ TÌM HIỂU VÀ ĐƯỢC HỌC
 
-- Trước đấy em chưa tiếp xúc với vi điều khiển, mới bắt đầu làm quen về arduino và esp32.
+- Tìm hiểu về các hàm: math, string.
 
-- Anh Sang có gợi ý cho em tài liệu về arduino qua https://docs.arduino.cc/language-reference/
-	và https://wiki-content.arduino.cc/en/Tutorial/BuiltInExamples
-	
-- Song song với đó em cũng đang được học về ESP ở CLB
-	
+- Ở CLB: học về nhiễu và cách chống nhiễu, led 7 đoạn, màn hình LCD.
 
-## B. NỘI DUNG ĐÃ TÌM HIỂU VÀ ĐƯỢC HỌC
+- Làm bài tập code chống nhiễu trong button, điều khiển led bằng 2 button, hiển thi chữ trên màn hình LCD.
 
-- Tìm hiểu về các hàm: digital, analog, time, math.
-
-- CLB đã được học về: led, button, biến trở, led 7 đoạn, màn hình LCD.
-
-- Làm bài tập: blink 8 led các hiệu ứng, nhấn nút để bật tắt đèn, nhận giá trị biến trở và trả ra led, nhấn nút để led 7 đoạn sáng từ 1 đến 9, hiển thi chữ trên màn hình LCD.
-
-## C. CÔNG VIỆC TIẾP THEO
+## B. CÔNG VIỆC TIẾP THEO
 
 - Tiếp tục tìm hiểu về arduino và esp32
 
-## D. MƯỢN ĐỒ CỦA LAP
+## C. MƯỢN ĐỒ CỦA LAB
 
 - Không
