@@ -8,7 +8,7 @@
 	
 	+ **String**(mô tả, cú pháp, các giá trị,...)
 	
-	+ Cách áp dụng hàm string như là:
+	+ Cách áp dụng hàm string và code ví dụ, các phần là:
 		
 		+ Sử dụng các toán tử để nhận biết loại ký tự
 		
