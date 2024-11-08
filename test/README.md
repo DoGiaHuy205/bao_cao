@@ -22,7 +22,7 @@
 		
 	+ Tại link: https://wiki-content.arduino.cc/en/Tutorial/BuiltInExamples
 
-- Ở CLB được học:
+- Đã học:
 
 	+ Nhiễu trong button là hiện tượng khi nhấn hoặc thả các tiếp điểm kim loại trong nút nhấn có thể nảy lên nhiều lần trước khi ổn định, gây ra các xung tín hiệu ngắt-nối liên tục
 	
