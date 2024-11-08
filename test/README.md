@@ -20,7 +20,7 @@
 		
 		+ Nhận/đặt giá trị của một ký tự cụ thể trong chuỗi.
 		
-	+ tại link: https://wiki-content.arduino.cc/en/Tutorial/BuiltInExamples
+	+ Tại link: https://wiki-content.arduino.cc/en/Tutorial/BuiltInExamples
 
 - Ở CLB được học:
 
