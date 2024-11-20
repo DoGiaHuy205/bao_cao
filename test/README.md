@@ -74,7 +74,7 @@
 	
 		+ Đã mắc được mạch như trong video
 
-	+(Tới đây thì buổi đầu em chưa nạp được code, sau đó về nhà thì đã nap được code tuy nhiên là vẫn chưa connect được ạ)
+	+ (Tới đây thì buổi đầu em chưa nạp được code, sau đó về nhà thì đã nap được code tuy nhiên là vẫn chưa connect được ạ)
 	
 	+ Bước 4: Publish dữ liệu lên MQTT
 	
