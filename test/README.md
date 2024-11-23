@@ -2,88 +2,129 @@
 
 ## A. NỘI DUNG ĐÃ TÌM HIỂU VÀ ĐƯỢC HỌC
 
-### Tìm hiểu về MQTT:
+### Tìm hiểu về MQTT qua các tài liệu anh Thế Anh chia sẻ:
 
-- Định nghĩa:
+- Tìm hiểu về khái niệm MQTT và các khái niệm cơ bản qua link https://viblo.asia/p/mqtt-la-gi-vai-tro-cua-mqtt-trong-iot-V3m5WL3bKO7
 
-	+ Là một giao thức truyền tin đơn giản
-	
-	+ Cho phép các thiết bị IoT có thể phát hoặc nhận bản tin
-	
-		+ Được thiết kế cho các thiết bị IoT đơn giản
-		
-		+ Băng thông (khả năng chuyển, nhận tín hiệu trong một khoảng thời gian) thấp
-		
-		+ Giao thức rất thích hợp cho các ứng dụng IoT
-		
-	+ Cho phép người sử dụng có thể gửi các lệnh điều khiển cũng nhận các bản tin từ các thiết bị IoT
-	
-- Cách sử dụng chính:
+- Tìm hiểu cách triển khai mqtt client trên esp32 với thư viện pubsubclient.h qua tài liệu https://github.com/knolleary/pubsubclient
 
-	+ Phát lệnh điều khiển để điều khiển thiết bị IoT
-	
-	+ Đọc dữ liệu từ thiết bị 
-	
-- Những khái niệm cơ bản:
+- Một vài code examples https://khuenguyencreator.com/lap-trinh-esp32-mqtt-bat-tat-den-voi-hivemq-broker/#google_vignette
 
-	+ Publish/Subscribe: Trong MQTT, một thiết bị IoT có thể phát dữ liệu qua một chủ đề hoặc có thể được đăng ký một chủ đề  để nhận những bản tin về chủ đề đó
+- Hai public broker phổ biến được anh Thế Anh giới thiệu:
+
+	+ HiveMQ: https://www.mqtt-dashboard.com/
 	
-	+ Messages: là bản tin trao đổi giữa các thiết bị, bản tin có thể là lệnh điều khiển hoặc dữ liệu
+	+ EMQX: https://www.emqx.com/en/mqtt/public-mqtt5-broker
 	
-	+ Topics:
-	
-		+ Là chủ đề mỗi một thiết bị IoT đăng ký để nhận được các bản tin đến hoặc chủ đề mà các thiết bị IoT muốn gửi các bản tin đi
-		
-		+ Chủ đề được biểu diễn dưới dạng chuỗi ký tự và được tách nhau bởi một dấu gạch chéo (/), mỗi một dấu gạch chéo biểu thị một mức chủ
-		
-	+ Broker:
-	
-		+ Nhận tất cả các bản tin
-		
-		+ Lọc các bản tin dựa theo chủ 
-		
-		+ Gửi bản tin này đến thiết bị IoT đã đăng ký chủ đề tương ứng trước đó
 
 ### Demo về MQTT:
 
-- Em đang tìm hiểu và chạy thử code examples theo link: https://khuenguyencreator.com/lap-trinh-esp32-mqtt-bat-tat-den-voi-hivemq-broker/#google_vignette
-	
-- Tìm hiểu về Hivemq broker:
+- Em đang tìm hiểu và chạy thử code examples: đăng ký(đọc) chủ đề "DGH_PTIT_MQTT_ESP32/OUT_TOPIC" từ chương trình (hello world-biến đếm)
 
-	+ Hivemq Broker là nền tảng truyền nhận dữ liệu bằng giao thức MQTT
-	
-	+ Hivemq Broker chia thành 2 loại:
+```cpp
+#include <WiFi.h>
+#include <PubSubClient.h>
 
-		+ Public broker: Sử dụng cổng 1883, không có bảo mật, thường dùng để test ứng dụng hoặc các sản phẩm đơn giản
-		
-		+ Private broker: Sử dụng cổng 8883 và bảo mật SSL/TLS. Thường sử dụng trong các sản phẩm thương mại
+const char* ssid = "Xuong";						//khai báo tài khoản mật khẩu wifi
+const char* password = "68686868";
 
-- Chạy thử code examples:
+const char* mqtt_server = "broker.hivemq.com";
+//const char* mqtt_server = "192.168.1.11";
 
-	+ Bước 1: Cài đặt thư viện pubsubclient
-	
-		+ Đã cài đặt được thư viện pubsubclient (nhưng mà lúc đấy e đọc trên web là "Mở terminal gõ lệnh pio lib install “knolleary/PubSubClient” thì em nghĩ là terminal trong app Arduino nên em không hiểu và nhờ anh Vũ cài hộ thư viện mà anh Vũ đã cài thư viện từ trên mạng và em vẫn chưa rõ lắm :))"
-		
-		+ Em cũng đã cài đặt các thông số của MQTT như Server broker và port của mình trên hivemq
-		
-	+ Bước 2: Kết nối với broker
-	
-		+ Web có nói "mỗi một thiết bị phải có 1 client ID riêng, nếu 2 thiết bị cùng client ID kết nối vào Broker. Nó sẽ đẩy thiết bị cũ ra hoặc không thể connect được. Trong bài này, mình sẽ cho Client ID 1 dãy số random khi kết nối vào." nên em vẫn để như code họ
-	
-	+ Bước 3: Kết nối phần cứng
-	
-		+ Đã mắc được mạch như trong video
+#define MQTT_PORT 1883
+#define MQTT_USER "dgh_ptit_1234_test"
+#define MQTT_PASSWORD "12345678"
+ 
+#define MQTT_TOPIC_IN "DGH_PTIT_MQTT_ESP32/IN_TOPIC"
+#define MQTT_TOPIC_OUT "DGH_PTIT_MQTT_ESP32/OUT_TOPIC"
 
-	+ (Tới đây thì buổi đầu em chưa nạp được code, sau đó về nhà thì đã nap được code tuy nhiên là vẫn chưa connect được ạ)
-	
-	+ Bước 4: Publish dữ liệu lên MQTT
-	
-	+ Bước 5: Subcrible dữ liêu từ MQTT
+WiFiClient espClient;
+PubSubClient client(espClient);
+unsigned long lastMsg = 0;
+#define MSG_BUFFER_SIZE (150)				// khai báo kích thước mảng
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
 
+void setup_wifi(){
+
+  delay(10);
+  Serial.println();							// Bắt đầu bằng cách kết nối với mạng WiFi
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  randomSeed(micros());
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+}
+
+void reconnect() {
+  while (!client.connected()) {							// Lặp lại cho đến khi kết nối lại
+    Serial.print("Attempting MQTT connection...");
+    String clientId = "ESP8266Client-";					// Tạo ID client ngẫu nhiên
+    clientId += String(random(0xffff), HEX);
+    if (client.connect(clientId.c_str())) {				// Tiếp tục kết nối
+      Serial.println("connected");						// Sau khi kết nối, hãy đăng thông báo...
+      client.publish(MQTT_TOPIC_OUT, "hello world");	
+      client.subscribe(MQTT_TOPIC_IN);					// ... và đăng ký lại
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);										// Chờ 5 giây trước khi thử lại
+    }
+  }
+}
+
+void setup(){
+  Serial.begin(9600);
+  setup_wifi();
+  client.setServer(mqtt_server, MQTT_PORT);
+  client.setCallback(callback);
+}
+
+void loop(){
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  unsigned long now = millis();
+  if (now - lastMsg > 2000) {
+    lastMsg = now;
+    ++value;
+    snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
+    Serial.print("Publish message: ");
+    Serial.println(msg);
+    client.publish(MQTT_TOPIC_OUT, msg);
+  }
+}
+
+```
 
 ## B. CÔNG VIỆC TIẾP THEO
 
-- Tiếp tục tìm hiểu về giao thức MQTT
+- Tiếp tục tìm hiểu về ESP32 và giao thức MQTT
 
 ## C. MƯỢN ĐỒ CỦA LAB
 
