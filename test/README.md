@@ -124,9 +124,9 @@ void loop(){
 
 - Kết quả:
 
-- ![ảnh](MQTT-test.PNG)
+- ![ảnh](MQTT-test.png)
 
-- ![ảnh](MQTT-test1.PNG)
+- ![ảnh](MQTT-test1.png)
 ## B. CÔNG VIỆC TIẾP THEO
 
 - Tiếp tục tìm hiểu về ESP32 và giao thức MQTT
