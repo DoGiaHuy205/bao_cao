@@ -79,12 +79,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 
 void reconnect() {
-  while (!client.connected()) {							// Lặp lại cho đến khi kết nối lại
+  while (!client.connected()) {						// Lặp lại cho đến khi kết nối lại
     Serial.print("Attempting MQTT connection...");
     String clientId = "ESP8266Client-";					// Tạo ID client ngẫu nhiên
     clientId += String(random(0xffff), HEX);
     if (client.connect(clientId.c_str())) {				// Tiếp tục kết nối
-      Serial.println("connected");						// Sau khi kết nối, hãy đăng thông báo...
+      Serial.println("connected");					// Sau khi kết nối, hãy đăng thông báo...
       client.publish(MQTT_TOPIC_OUT, "hello world");	
       client.subscribe(MQTT_TOPIC_IN);					// ... và đăng ký lại
     } else {
