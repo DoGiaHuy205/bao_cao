@@ -91,7 +91,7 @@ void reconnect() {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
-      delay(5000);										// Chờ 5 giây trước khi thử lại
+      delay(5000);							// Chờ 5 giây trước khi thử lại
     }
   }
 }
