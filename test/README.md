@@ -25,7 +25,7 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "Xuong";						//khai báo tài khoản mật khẩu wifi
+const char* ssid = "Xuong";				//khai báo tài khoản mật khẩu wifi
 const char* password = "68686868";
 
 const char* mqtt_server = "broker.hivemq.com";
@@ -48,7 +48,7 @@ int value = 0;
 void setup_wifi(){
 
   delay(10);
-  Serial.println();							// Bắt đầu bằng cách kết nối với mạng WiFi
+  Serial.println();					// Bắt đầu bằng cách kết nối với mạng WiFi
   Serial.print("Connecting to ");
   Serial.println(ssid);
 
