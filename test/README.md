@@ -127,15 +127,15 @@ void loop(){
 
 - Kết quả đăng ký(đọc) bản tin:
 
-- ![ảnh](MQTT-test.png)
+![ảnh](MQTT-test.png)
 
-- ![ảnh](MQTT-test1.png)
+![ảnh](MQTT-test1.png)
 
 - Kết quả xuất bản(nhận) bản tin:
 
-- ![ảnh](MQTT-test2.png)
+![ảnh](MQTT-test2.png)
 
-- ![ảnh](MQTT-test3.png)
+![ảnh](MQTT-test3.png)
 
 ## B. CÔNG VIỆC TIẾP THEO
 
