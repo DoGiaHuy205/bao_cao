@@ -15,11 +15,14 @@
 	+ HiveMQ: https://www.mqtt-dashboard.com/
 	
 	+ EMQX: https://www.emqx.com/en/mqtt/public-mqtt5-broker
-	
 
 ### Demo về MQTT:
 
-- Em đang tìm hiểu và chạy thử code examples: đăng ký(đọc) chủ đề "DGH_PTIT_MQTT_ESP32/OUT_TOPIC" từ chương trình (hello world-biến đếm)
+- Em đang tìm hiểu và chạy thử code examples:
+
+	+ Thành công đăng ký(đọc) chủ đề "DGH_PTIT_MQTT_ESP32/OUT_TOPIC" từ chương trình
+	
+	+ Thành công xuất bản(nhận) chủ đề "DGH_PTIT_MQTT_ESP32/IN_TOPIC" từ chương trình
 
 ```cpp
 #include <WiFi.h>
@@ -127,6 +130,11 @@ void loop(){
 - ![ảnh](MQTT-test.png)
 
 - ![ảnh](MQTT-test1.png)
+
+- ![ảnh](MQTT-test2.png)
+
+- ![ảnh](MQTT-test3.png)
+
 ## B. CÔNG VIỆC TIẾP THEO
 
 - Tiếp tục tìm hiểu về ESP32 và giao thức MQTT
