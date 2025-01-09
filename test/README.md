@@ -20,9 +20,9 @@
 
 - Em đang tìm hiểu và chạy thử code examples:
 
-	+ Thành công đăng ký(đọc) chủ đề "DGH_PTIT_MQTT_ESP32/OUT_TOPIC" từ chương trình
+	+ Thành công đăng ký(đọc) bản tin chủ đề "DGH_PTIT_MQTT_ESP32/OUT_TOPIC" từ chương trình
 	
-	+ Thành công xuất bản(nhận) chủ đề "DGH_PTIT_MQTT_ESP32/IN_TOPIC" từ chương trình
+	+ Thành công xuất bản(nhận) bản tin chủ đề "DGH_PTIT_MQTT_ESP32/IN_TOPIC" từ chương trình
 
 ```cpp
 #include <WiFi.h>
@@ -125,11 +125,13 @@ void loop(){
 
 ```
 
-- Kết quả:
+- Kết quả đăng ký(đọc) bản tin:
 
 - ![ảnh](MQTT-test.png)
 
 - ![ảnh](MQTT-test1.png)
+
+- Kết quả xuất bản(nhận) bản tin:
 
 - ![ảnh](MQTT-test2.png)
 
