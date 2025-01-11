@@ -142,8 +142,6 @@ void loop() {
 - Kết quả:
 
 
-
-
 ## B. CÔNG VIỆC TIẾP THEO
 
 - Tiếp tục tìm hiểu về ESP32 và giao thức MQTT
