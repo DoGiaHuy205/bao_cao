@@ -1,6 +1,6 @@
 # D23_DoGiaHuy
 
-## A. NỘI DUNG ĐÃ TÌM HIỂU VÀ ĐƯỢC HỌC
+## A. NỘI DUNG ĐÃ TÌM HIỂU
 
 ### Demo về MQTT:
 
