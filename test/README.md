@@ -141,6 +141,8 @@ void loop() {
 
 - Kết quả:
 
+	+ https://youtu.be/gqEetgMwPmQ
+
 
 ## B. CÔNG VIỆC TIẾP THEO
 
