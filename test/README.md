@@ -2,140 +2,146 @@
 
 ## A. NỘI DUNG ĐÃ TÌM HIỂU VÀ ĐƯỢC HỌC
 
-### Tìm hiểu về MQTT qua các tài liệu anh Thế Anh chia sẻ:
-
-- Tìm hiểu về khái niệm MQTT và các khái niệm cơ bản qua link https://viblo.asia/p/mqtt-la-gi-vai-tro-cua-mqtt-trong-iot-V3m5WL3bKO7
-
-- Tìm hiểu cách triển khai mqtt client trên esp32 với thư viện pubsubclient.h qua tài liệu https://github.com/knolleary/pubsubclient
-
-- Một vài code examples https://khuenguyencreator.com/lap-trinh-esp32-mqtt-bat-tat-den-voi-hivemq-broker/#google_vignette
-
-- Hai public broker phổ biến được anh Thế Anh giới thiệu:
-
-	+ HiveMQ: https://www.mqtt-dashboard.com/
-	
-	+ EMQX: https://www.emqx.com/en/mqtt/public-mqtt5-broker
-
 ### Demo về MQTT:
 
 - Em đang tìm hiểu và chạy thử code examples:
-
-	+ Thành công đăng ký(đọc) bản tin chủ đề "DGH_PTIT_MQTT_ESP32/OUT_TOPIC" từ chương trình
 	
-	+ Thành công xuất bản(nhận) bản tin chủ đề "DGH_PTIT_MQTT_ESP32/IN_TOPIC" từ chương trình
+	+ Dùng public broker HiveMQ thành công chuyển đổi trạng thái led bằng button hoặc từ broker gửi bản tin(ON/OFF) về
+
+#### Code và giải thích
+	
+- Hàm setup_wifi() để kết nối esp32 với wifi
 
 ```cpp
-#include <WiFi.h>
-#include <PubSubClient.h>
-
-const char* ssid = "Xuong";				//khai báo tài khoản mật khẩu wifi
-const char* password = "68686868";
-
-const char* mqtt_server = "broker.hivemq.com";
-//const char* mqtt_server = "192.168.1.11";
-
-#define MQTT_PORT 1883
-#define MQTT_USER "dgh_ptit_1234_test"
-#define MQTT_PASSWORD "12345678"
- 
-#define MQTT_TOPIC_IN "DGH_PTIT_MQTT_ESP32/IN_TOPIC"
-#define MQTT_TOPIC_OUT "DGH_PTIT_MQTT_ESP32/OUT_TOPIC"
-
-WiFiClient espClient;
-PubSubClient client(espClient);
-unsigned long lastMsg = 0;
-#define MSG_BUFFER_SIZE (150)				// khai báo kích thước mảng
-char msg[MSG_BUFFER_SIZE];
-int value = 0;
-
-void setup_wifi(){
-
-  delay(10);
-  Serial.println();					// Bắt đầu bằng cách kết nối với mạng WiFi
+void setup_wifi() {
   Serial.print("Connecting to ");
-  Serial.println(ssid);
-
-  WiFi.mode(WIFI_STA);
+  Serial.println(ssid);							// kết nối wifi với ssid và pass
   WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED) {		// Sau đấy thì em cho esp liên tục kết nối với wifi bằng WiFi.status()
     delay(500);
     Serial.print(".");
   }
-
-  randomSeed(micros());
-
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
+  Serial.println("\nWiFi connected");			// Sau khi kết nối wifi thành công thì in ra serial cùng với địa chỉ IP 
+  Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
 }
 
-void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("Message arrived [");
-  Serial.print(topic);
-  Serial.print("] ");
-  for (int i = 0; i < length; i++) {
-    Serial.print((char)payload[i]);
-  }
-  Serial.println();
-}
+```
 
-void reconnect() {
-  while (!client.connected()) {						// Lặp lại cho đến khi kết nối lại
-    Serial.print("Attempting MQTT connection...");
-    String clientId = "ESP8266Client-";					// Tạo ID client ngẫu nhiên
-    clientId += String(random(0xffff), HEX);
-    if (client.connect(clientId.c_str())) {				// Tiếp tục kết nối
-      Serial.println("connected");					// Sau khi kết nối, hãy đăng thông báo...
-      client.publish(MQTT_TOPIC_OUT, "hello world");	
-      client.subscribe(MQTT_TOPIC_IN);					// ... và đăng ký lại
-    } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);							// Chờ 5 giây trước khi thử lại
+- Hàm connect_to_broker() để kết nối esp với broker
+
+```cpp
+void connect_to_broker() {
+  static unsigned long lastReconnectAttempt = 0;
+  if (!client.connected()) {
+    unsigned long now = millis();
+    if (now - lastReconnectAttempt > 5000) {			// Chờ 5 giây để gọi lại
+      lastReconnectAttempt = now;
+      if (client.connect("ESP32", MQTT_USER, MQTT_PASSWORD)) {			// Kết nối với client.connect() và xác thực bằng tên người dùng, mật khẩu
+        Serial.println("Connected to MQTT broker");
+        client.subscribe(MQTT_LED1_TOPIC);
+        client.subscribe(MQTT_LED2_TOPIC);			// Nếu kết nối được in ra serial và đăng ký 2 chủ đề LED1 và LED2
+      } else {
+        Serial.print("MQTT connection failed, rc=");
+        Serial.println(client.state());			// Nếu không kết nối được, in ra serial và kết nối lại 
+      }
     }
   }
 }
+```
 
-void setup(){
-  Serial.begin(9600);
+- Hàm callback() để xử lý các tin nhắn nhận từ máy chủ MQTT.
+
+```cpp
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.println("-------new message from broker-----");
+  Serial.print("topic: ");
+  Serial.println(topic);
+  Serial.print("message: ");			// In thông tin tin nhắn nhận được (topic và nội dung).
+  
+  String message = "";
+  for (int i = 0; i < length; i++) {			// Chuyển tin nhắn vào mảng string và in ra serial
+    message += (char)payload[i];
+  }
+  Serial.println(message);
+
+  if (String(topic) == MQTT_LED1_TOPIC) {			// Kiểm tra nội dung tin nhắn có phải là tin nhắn điểu khiển không(ON/OFF)
+    if (message == "OFF") {			// Nếu tin nhắn là OFF thì cập nhật trạng thái led, tắt đèn và in ra màn hình
+      trthaiLed1 = LOW;
+      digitalWrite(LED1, LOW);
+      Serial.println("LED1 OFF");
+    } else if (message == "ON") {			// Nếu tin nhắn là ON thì cập nhật trạng thái led, bật đèn và in ra màn hình
+      trthaiLed1 = HIGH;
+      digitalWrite(LED1, HIGH);
+      Serial.println("LED1 ON");
+    }
+  } else if (String(topic) == MQTT_LED2_TOPIC) {			// Kiểm tra nội dung tin nhắn có phải là tin nhắn điểu khiển không(ON/OFF)
+    if (message == "OFF") {			// Nếu tin nhắn là OFF thì cập nhật trạng thái led, tắt đèn và in ra màn hình
+      trthaiLed2 = LOW;
+      digitalWrite(LED2, LOW);
+      Serial.println("LED2 OFF");
+    } else if (message == "ON") {			// Nếu tin nhắn là ON thì cập nhật trạng thái led, bật đèn và in ra màn hình
+      trthaiLed2 = HIGH;
+      digitalWrite(LED2, HIGH);
+      Serial.println("LED2 ON");
+    }
+  }
+}
+```
+
+- Hàm setup() để khởi tạo chương trình và hàm loop() vòng lặp chính để chạy chương trình
+
+```cpp
+void setup() {
+  Serial.begin(115200);
   setup_wifi();
-  client.setServer(mqtt_server, MQTT_PORT);
-  client.setCallback(callback);
+  client.setServer(MQTT_SERVER, MQTT_PORT);			// Gán địa chỉ máy chủ và cổng MQTT cho đối tượng client.
+  client.setCallback(callback);			// Gán hàm callback xử lý tin nhắn từ MQTT.
+  connect_to_broker();
+
+  pinMode(BUT1, INPUT);
+  pinMode(BUT2, INPUT);
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+
+  // Send initial LED states
+  client.publish(MQTT_LED1_TOPIC, trthaiLed1 == HIGH ? "ON" : "OFF");			// Gửi trạng thái ban đầu của LED đến máy chủ MQTT.
+  client.publish(MQTT_LED2_TOPIC, trthaiLed2 == HIGH ? "ON" : "OFF");
 }
 
-void loop(){
-  if (!client.connected()) {
-    reconnect();
-  }
+void loop() {
   client.loop();
+  if (!client.connected()) {			// Gọi client.loop() để xử lý kết nối và tin nhắn MQTT nếu không kết nối MQTT, thử kết nối lại (connect_to_broker())
+    connect_to_broker();
+  }
 
-  unsigned long now = millis();
-  if (now - lastMsg > 2000) {
-    lastMsg = now;
-    ++value;
-    snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
-    Serial.print("Publish message: ");
-    Serial.println(msg);
-    client.publish(MQTT_TOPIC_OUT, msg);
+  trthaiButton1 = digitalRead(BUT1);			// Đọc trạng thái 2 button
+  trthaiButton2 = digitalRead(BUT2);
+
+  if (trthaiButton1 == HIGH) {			// Nếu button được nhấn, đảo trạng thái led và gửi trạng thái mới về broker
+    trthaiLed1 = !trthaiLed1;
+    digitalWrite(LED1, trthaiLed1);
+    client.publish(MQTT_LED1_TOPIC, trthaiLed1 == HIGH ? "ON" : "OFF");
+    while (digitalRead(BUT1) == HIGH) {			// Chờ cho nút nhấn được thả ra
+      delay(5);
+    }
+  }
+
+  if (trthaiButton2 == HIGH) {			// Nếu button được nhấn, đảo trạng thái led và gửi trạng thái mới về broker
+    trthaiLed2 = !trthaiLed2;
+    digitalWrite(LED2, trthaiLed2);
+    client.publish(MQTT_LED2_TOPIC, trthaiLed2 == HIGH ? "ON" : "OFF");
+    while (digitalRead(BUT2) == HIGH) {			// Chờ cho nút nhấn được thả ra
+      delay(5);
+    }
   }
 }
 
 ```
 
-- Kết quả đăng ký(đọc) bản tin:
+- Kết quả:
 
-![ảnh](MQTT-test.png)
 
-![ảnh](MQTT-test1.png)
-
-- Kết quả xuất bản(nhận) bản tin:
-
-![ảnh](MQTT-test2.png)
-
-![ảnh](MQTT-test3.png)
 
 ## B. CÔNG VIỆC TIẾP THEO
 
