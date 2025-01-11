@@ -1,6 +1,8 @@
-# D23_DoGiaHuy
+# D23_DoGiaHuy Báo cáo công việc ngày 11/01
 
 ## A. NỘI DUNG ĐÃ TÌM HIỂU
+
+- Link báo cáo cũ: [https://github.com/ptitopen-git/D23_DoGiaHuy/tree/main/LAB/241123]
 
 ### Demo về MQTT:
 
@@ -138,6 +140,8 @@ void loop() {
 }
 
 ```
+
+- Link code: https://github.com/DoGiaHuy205/bao_cao/blob/main/test/MQTT_test1_2led_2button/MQTT_test1_2led_2button.ino
 
 - Kết quả:
 
