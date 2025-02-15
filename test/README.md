@@ -15,4 +15,4 @@
 
 |Tên linh kiện 						   | Số lượng |
 |--------------------------------------|----------|
-|Mạch cảm biến dòng điện điện áp INA219|    3     |
+|Mạch cảm biến dòng điện điện áp INA219|    5     |
