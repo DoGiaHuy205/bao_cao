@@ -1,18 +1,185 @@
-# D23_DoGiaHuy Báo cáo công việc ngày 19/02/2024
+# D23_DoGiaHuy Báo cáo công việc ngày 29/03/2025
 
-# A. NỘI DUNG ĐÃ TÌM HIỂU
+## A. NỘI DUNG ĐÃ TÌM HIỂU
 
-## 1. TỔNG HỢP MODULE ESP32
+### 1. Bỏ việc lấy nguồn (5v đến Vin-) từ Arduino nano thay bằng lấy nguồn 5v luôn từ J-link
 
-### 1.1 Module ESP32-C3-mini
+- Ảnh sơ đồ mạch lý thuyết:
 
-Tổng hợp module esp32														
-|STT|Tên module|Ảnh module|Sơ đồ mạch|Các phương án cấp nguồn|Loại chip|Bộ nhớ Flash|SRAM|Kích thước và bố trí chân|Led trên kit|Cổng nạp|Giao tiếp|Link mua|Giá|Link tìm hiểu|
-|---|----------|----------|----------|-----------------------|---------|------------|----|-------------------------|------------|--------|---------|--------|---|-------------|
-|1|ESP32-C3-mini|![ảnh](esp32_c3.png)|![ảnh](so_do_ngly_esp32_c3.jpg)|Sử dụng IC dán ME6211 SOT23-5|ESP32 C3|4MB|400KB|13 chân GPIO|1 led nguồn,1 led nối với GPOI8|Type-C|UART, SPI, I2C, PWM, ADC|[link](https://shopee.vn/Samirob-ESP32-C3-ESP32-S3-ESP32-H2-ESP32-C6-Ban-Ph%C3%A1t-Tri%E1%BB%83n-ESP32-C3-SuperMini-WiFi-Bluetooth-ESP32C3-B%E1%BA%A3ng-M%E1%BB%9F-R%E1%BB%99ng-i.578443443.24400570619?sp_atk=9984aad9-bced-4986-8e1f-d91164d2f634&xptdk=9984aad9-bced-4986-8e1f-d91164d2f634)|50.490đ|[link](https://www.dientudat.com/module-thu-phat-wifi-bluetooth-esp32-c3-mini)|
-|2|ESP32-S3-mini|![ảnh](esp32_s3.png)|	|	|ESP32 S3|4MB|512KB|14 chân GPIO|1 led nguồn,1 led nối với GPOI48|Type-C|UART, SPI, I2C, PWM, ADC|[link](https://shopee.vn/Samirob-ESP32-C3-ESP32-S3-ESP32-H2-ESP32-C6-Ban-Ph%C3%A1t-Tri%E1%BB%83n-ESP32-C3-SuperMini-WiFi-Bluetooth-ESP32C3-B%E1%BA%A3ng-M%E1%BB%9F-R%E1%BB%99ng-i.578443443.24400570619?sp_atk=9984aad9-bced-4986-8e1f-d91164d2f634&xptdk=9984aad9-bced-4986-8e1f-d91164d2f634)|97.040đ|[link](https://hshop.vn/kit-phat-trien-wifi-ble5-soc-esp32-s3-super-mini-4mb)|
-|3|ESP32-WROOM-32|![ảnh](esp32_wroom_32.png)|![ảnh](so_do_ngly_esp32_wroom_32.jpg)|	|ESP32-D0WDQ6|4MB|520KB|25 chân GPIO|1 led nguồn,1 led nối với D2(GPIO2)|Micro-USB/Type-C|UART, SPI, I2C, PWM, ADC|[link](https://shopee.vn/B%E1%BA%A3ng-m%E1%BA%A1ch-ph%C3%A1t-tri%E1%BB%83n-ESP32-WiFi-Bluetooth-Ultra-Low-Power-Core-ESP-32-ESP-32S-ESP-32-Similar-ESP8266-ch%E1%BA%A5t-l%C6%B0%E1%BB%A3ng-cao-i.578443443.13742226706?sp_atk=eb3a9f73-926b-4712-9b0e-fcdc4c32d55d)|86.526đ|[link](https://banlinhkien.com/kit-wifi-esp32-espwroom32s-p6649289.html)|
-|4|ESP32-CAM|![ảnh](esp32_cam.png)|![ảnh](so_do_ngly_esp32_cam.jpg)|	|ESP32-D0WDQ6|4MB|520KB|10 chân GPIO|1 led nguồn,1 led flash nối với GPOI4|USB TTL|UART, SPI, I2C, PWM|[link](https://shopee.vn/Module-ESP32-CAM-ESP32-c%C3%B3-t%C3%ADch-h%E1%BB%A3p-Camera-WiFi-Bluetooth-4.2-i.1234792873.26518335904?sp_atk=e4426964-8d62-4fb8-b585-73ba85adec9d&xptdk=e4426964-8d62-4fb8-b585-73ba85adec9d)|135.000đ|[link](https://mischianti.org/esp32-cam-high-resolution-pinout-and-specs/)|
-|5|ESP32-S2|![ảnh](esp32_s2.png)|![ảnh](so_do_ngly_esp32_s2.jpg)|	|ESP32 S2|4MB|-|27 chân GPIO|1 led nguồn,1 led nối với GPOI15|Type-C|UART, SPI, I2C, PWM, ADC|[link](https://shopee.vn/B%E1%BA%A3ng-M%E1%BA%A1Ch-ESP32-S2-Mini-V1.0.0-LOLIN-WIFI-IOT-ESP32-S2FN4R2-ESP32-S2-4MB-FLASH-2MB-PSRAM-MicroPython-Arduino-i.578443443.16380007003?sp_atk=c66504ea-150d-429c-8eb0-0321af64df99&xptdk=c66504ea-150d-429c-8eb0-0321af64df99)|46.640đ|[link](https://www.sudo.is/docs/esphome/boards/esp32s2mini/)|
-|6|ESP32-WROOM-32U|![ảnh](esp32_wroom_32u.png)|![ảnh](so_do_ngly_esp32_wroom_32u.png)|	|ESP32-S0WD|4MB|-|22 chân GPIO|1 led nguồn,1 led nối với 2(GPIO2)|Micro-USB|UART, SPI, I2C, PWM, ADC|[link](https://shopee.vn/B%E1%BA%A3ng-M%E1%BA%A1ch-Ph%C3%A1t-Tri%E1%BB%83n-WiFi-Bluetooth-Esp32-L%C3%B5i-K%C3%A9p-ESP-32-ESP-32S-ESP-32-Similar-ESP8266-i.578443443.14161303136?sp_atk=7ff1e370-45a9-4ae1-a6bc-14eb4fa23c5d&xptdk=7ff1e370-45a9-4ae1-a6bc-14eb4fa23c5d)|77.220đ|[link](https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf)|
-|7|ESP32-WROOM-32D|![ảnh](esp32_wroom_32d.png)|![ảnh](so_do_ngly_esp32_wroom_32u.png)|	|ESP32-S0WD|4MB|-|22 chân GPIO|1 led nguồn,1 led nối với 2(GPIO2)|Micro-USB|UART, SPI, I2C, PWM, ADC|[link](https://shopee.vn/B%E1%BA%A3ng-M%E1%BA%A1ch-Ph%C3%A1t-Tri%E1%BB%83n-WiFi-Bluetooth-Esp32-L%C3%B5i-K%C3%A9p-ESP-32-ESP-32S-ESP-32-Similar-ESP8266-i.578443443.14161303136?sp_atk=7ff1e370-45a9-4ae1-a6bc-14eb4fa23c5d&xptdk=7ff1e370-45a9-4ae1-a6bc-14eb4fa23c5d)|77.220đ|[link](https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf)|
+![ảnh](mach.jpg)
+
+- Ảnh sơ đồ mạch thực tế:
+
+![ảnh](he_thong.jpg)
+
+### 2. Thực hiện đẩy dữ liệu đọc được từ INA219 lên google sheet
+
+- Link tìm hiểu: https://randomnerdtutorials.com/esp32-datalogging-google-sheets/
+
+####  Hàm setup()
+
+```cpp
+void setup() {
+    Serial.begin(115200);
+    while (!Serial) { delay(1); }
+    Serial.println("Starting...");
+```
+
+- Bật Serial Monitor với tốc độ 115200 baud.
+
+- Đợi Serial sẵn sàng.
+
+
+```cpp	
+if (!ina219.begin()) {
+        Serial.println("Failed to find INA219 chip");
+        while (1) { delay(10); }
+    }
+    Serial.println("INA219 Initialized");
+```
+
+- Kiểm tra xem INA219 có hoạt động không. Nếu không báo kết nối thất bại và kết nối lại
+
+	
+```cpp
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    Serial.print("Connecting to Wi-Fi");
+    while (WiFi.status() != WL_CONNECTED) {
+        Serial.print(".");
+        delay(1000);
+    }
+    Serial.println();
+    Serial.print("Connected with IP: ");
+    Serial.println(WiFi.localIP());
+```
+
+- Kết nối với wifi, nếu kết nối thành công, hiển thị địa chỉ IP.
+
+
+```cpp
+    GSheet.setTokenCallback(tokenStatusCallback);
+    GSheet.setPrerefreshSeconds(10 * 60);
+    GSheet.begin(CLIENT_EMAIL, PROJECT_ID, PRIVATE_KEY);
+```
+
+- Cấu hình Google Sheets API.
+
+- Thiết lập callback để kiểm tra trạng thái token.
+
+- Đặt thời gian làm mới token là 10 phút.
+
+#### Hàm loop()
+
+- Hàm loop() thực hiện gửi dữ liệu lên Google Sheets sau mỗi 30 giây.
+
+```cpp
+void loop() {
+    bool ready = GSheet.ready();
+    if (ready && millis() - lastTime > timerDelay) {
+```
+
+- Kiểm tra nếu Google Sheets API đã sẵn sàng.
+
+- Kiểm tra nếu đã đến thời gian gửi dữ liệu tiếp theo.
+
+
+```cpp
+	lastTime = millis();
+	FirebaseJson response;
+	FirebaseJson valueRange;
+```
+
+- response: Lưu phản hồi từ Google Sheets.
+
+- valueRange: Định dạng dữ liệu sẽ gửi lên Google Sheets.
+
+
+```cpp
+	float shuntvoltage = ina219.getShuntVoltage_mV();
+	float busvoltage = ina219.getBusVoltage_V();
+	float current_mA = ina219.getCurrent_mA();
+	float power_mW = ina219.getPower_mW();
+	float loadvoltage = busvoltage + (shuntvoltage / 1000);
+```
+
+- getShuntVoltage_mV() → Điện áp rơi trên shunt (mV).
+
+- getBusVoltage_V() → Điện áp bus (V).
+
+- getCurrent_mA() → Dòng điện (mA).
+
+- getPower_mW() → Công suất (mW).
+
+- loadvoltage → Điện áp thực tế tải tiêu thụ.
+
+
+```cpp
+	Serial.println("Appending data to Google Sheets...");
+	
+	valueRange.add("majorDimension", "COLUMNS");
+	valueRange.set("values/[0]/[0]", millis()); // Timestamp
+	valueRange.set("values/[1]/[0]", busvoltage);
+	valueRange.set("values/[2]/[0]", shuntvoltage);
+	valueRange.set("values/[3]/[0]", loadvoltage);
+	valueRange.set("values/[4]/[0]", current_mA);
+	valueRange.set("values/[5]/[0]", power_mW);
+```
+
+- Tạo cấu trúc dữ liệu JSON để gửi lên Google Sheets.
+
+
+```cpp
+    bool success = GSheet.values.append(&response, spreadsheetId, "Sheet1!A1", &valueRange);
+```
+
+- Gửi dữ liệu lên Google Sheets, ghi vào bảng "Sheet1", bắt đầu từ ô "A1".
+
+
+```cpp
+        if (success) {
+            response.toString(Serial, true);
+            valueRange.clear();
+        } else {
+            Serial.println(GSheet.errorReason());
+        }
+        Serial.println();
+    }
+}
+```
+
+- Nếu gửi thành công, in phản hồi từ Google Sheets.
+
+- Nếu gửi thất bại, in ra lỗi.
+
+
+```cpp
+void tokenStatusCallback(TokenInfo info) {
+    if (info.status == token_status_error) {
+        GSheet.printf("Token Error: %s\n", GSheet.getTokenError(info).c_str());
+    } else {
+        GSheet.printf("Token Status: %s\n", GSheet.getTokenStatus(info).c_str());
+    }
+}
+```
+
+- Kiểm tra trạng thái xác thực với Google Sheets API.
+
+- Nếu có lỗi, in ra lỗi token.
+
+#### File code full
+
+- https://github.com/ptitopen-git/D23_DoGiaHuy/blob/main/LAB/250329/INA219_GS_do_dong_tieu_thu/INA219_GS_do_dong_tieu_thu.ino
+
+## B. KHÓ KHĂN
+
+- Lúc e mới tìm hiểu thì khi chạy chương trình có bị lỗi reset liên tục, sau khi đo lại điện áp của esp thì chương trình lại chạy bình thường, em chưa rõ tại sao ạ
+
+## C. CÔNG VIỆC TIẾP THEO
+
+- Tiếp tục thực hiện đo điện áp tiêu thụ của 2 module esp32 khi ở trạng thái bình thường và trạng thái ngủ.
+
+## D. CẦM ĐỒ CỦA LAB
+
+|Tên linh kiện 						   | Số lượng |
+|--------------------------------------|----------|
+|Mạch cảm biến dòng điện điện áp INA219|    5     |
